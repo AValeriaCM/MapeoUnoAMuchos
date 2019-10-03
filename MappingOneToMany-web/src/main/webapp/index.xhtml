@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Universidad</title>
+    </h:head>
+    <h:body>
+        <h:form id="universidad">
+            <p:growl id="growl" showDetail="true"/>
+            <p:panel id="panelU" header="Ingrese Datos Universidad">
+                <h:panelGrid columns="3" cellpadding="5" styleClass="ui-grid"> 
+                    <p:outputLabel for="nombre" 
+                                   value="Nombre: "
+                                   styleClass="requiredLbl"/>
+                    <p:autoComplete id="nombre" label="Nombre"
+                                 value=""
+                                 required="true">
+                    </p:autoComplete>
+                    <p:message for="nombre" showDetail="true"/>
+                    <p:outputLabel for="extension" 
+                                   value="Extension: "
+                                   styleClass="requiredLbl"/>
+                    <p:autoComplete id="extension" label="Extension"
+                                 value=""
+                                 required="true">
+                    </p:autoComplete>
+                    <p:message for="extension" showDetail="true"/>
+                    <p:outputLabel for="escudo" 
+                                   value="Escudo: "
+                                   styleClass="requiredLbl"/>
+                    <p:autoComplete id="escudo" label="Escudo"
+                                    value=""
+                                    required="true">
+                    </p:autoComplete>
+                    <p:message for="numeroCuenta" showDetail="true"/>
+                </h:panelGrid>  
+                <p:commandButton value="Guardar" update=":universidad:panelU"/>
+            </p:panel>
+        </h:form>
+        <h:form id="diplomado">
+            <p:panel id="panelD" header="Ingrese Datos Diplomado">
+                <h:panelGrid columns="3" cellpadding="5" styleClass="ui-grid"> 
+                    <p:outputLabel for="nombre" 
+                                   value="Nombre: "
+                                   styleClass="requiredLbl"/>
+                    <p:autoComplete id="nombre" label="Nombre"
+                                 value=""
+                                 required="true">
+                    </p:autoComplete>
+                    <p:message for="nombre" showDetail="true"/>
+                    <p:outputLabel for="duracion" 
+                                   value="Duracion: "
+                                   styleClass="requiredLbl"/>
+                    <p:autoComplete id="duracion" label="Duracion"
+                                 value=""
+                                 required="true">
+                    </p:autoComplete>
+                    <p:message for="duracion" showDetail="true"/>
+                </h:panelGrid>  
+                <p:commandButton value="Guardar" update=":diplomado:panelD"/>
+            </p:panel>
+        </h:form>
+        <h:form id="estudiante">
+            <p:panel id="panelE" header="Ingrese Datos Estudiante">
+                <h:panelGrid columns="3" cellpadding="5" styleClass="ui-grid"> 
+                    <p:outputLabel for="nombre" 
+                                   value="Nombre: "
+                                   styleClass="requiredLbl"/>
+                    <p:autoComplete id="nombre" label="Nombre"
+                                 value=""
+                                 required="true">
+                    </p:autoComplete>
+                    <p:message for="nombre" showDetail="true"/>
+                    <p:outputLabel for="cedula" 
+                                   value="Cedula: "
+                                   styleClass="requiredLbl"/>
+                    <p:autoComplete id="cedula" label="Cedula"
+                                 value=""
+                                 required="true">
+                    </p:autoComplete>
+                    <p:message for="cedula" showDetail="true"/>
+                </h:panelGrid>  
+                <p:commandButton value="Guardar" update=":estudiante:panelE"/>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+
