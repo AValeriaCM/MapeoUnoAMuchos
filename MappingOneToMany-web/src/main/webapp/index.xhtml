@@ -35,11 +35,12 @@
                                     value=""
                                     required="true">
                     </p:autoComplete>
-                    <p:message for="numeroCuenta" showDetail="true"/>
+                    <p:message for="escudo" showDetail="true"/>
                 </h:panelGrid>  
                 <p:commandButton value="Guardar" update=":universidad:panelU"/>
             </p:panel>
         </h:form>
+        <p:separator/>
         <h:form id="diplomado">
             <p:panel id="panelD" header="Ingrese Datos Diplomado">
                 <h:panelGrid columns="3" cellpadding="5" styleClass="ui-grid"> 
@@ -63,6 +64,7 @@
                 <p:commandButton value="Guardar" update=":diplomado:panelD"/>
             </p:panel>
         </h:form>
+        <p:separator/>
         <h:form id="estudiante">
             <p:panel id="panelE" header="Ingrese Datos Estudiante">
                 <h:panelGrid columns="3" cellpadding="5" styleClass="ui-grid"> 
@@ -86,6 +88,46 @@
                 <p:commandButton value="Guardar" update=":estudiante:panelE"/>
             </p:panel>
         </h:form>
+        <p:separator/>
+        <h:form id="datosUniversidad">
+            <p:dataTable var="univ" value="#{universidadController.listarUniversidad()}">
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{univ.nombre}" />
+                </p:column>
+                <p:column headerText="Extension">
+                    <h:outputText value="#{univ.extension}" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+        <p:separator/>
+        <h:form id="datosEstudiante">
+            <p:dataTable var="est" value="#{estudianteController.listarEstudiante()}">
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{est.nombre}" />
+                </p:column>
+                <p:column headerText="Cedula">
+                    <h:outputText value="#{est.cedula}" />
+                </p:column>
+                <p:column headerText="Diplomado">
+                    <h:outputText value="#{est.diplomado}" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+        <p:separator/>
+        <h:form id="datosDiplomado">
+            <p:dataTable var="dip" value="#{diplomadoController.listarDiplomado()}">
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{dip.nombre}" />
+                </p:column>
+                <p:column headerText="Duracion">
+                    <h:outputText value="#{dip.duracion}" />
+                </p:column>
+                <p:column headerText="Universidad">
+                    <h:outputText value="#{dip.universidad}" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+        
     </h:body>
 </html>
 

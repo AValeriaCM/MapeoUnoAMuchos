@@ -5,6 +5,7 @@
  */
 package com.mycompany.entity;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,10 +23,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "universidad")
-public class Universidad {
+public class Universidad implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id")
     private int id;
     @Column(name = "nombre")
     private String nombre;
@@ -35,6 +37,10 @@ public class Universidad {
     private String escudo;
     @OneToMany(mappedBy = "universidad", cascade = CascadeType.ALL)
     private List<Diplomado> listaDiplomados;
+
+    public Universidad() {
+    }
+    
     
     /**
      * Constructor
@@ -43,12 +49,12 @@ public class Universidad {
      * @param extension
      * @param escudo 
      */
-    public Universidad(int id, String nombre, String extension, String escudo) {
-        this.id = id;
+    public Universidad(String nombre, String extension, String escudo) {
         this.nombre = nombre;
         this.extension = extension;
         this.escudo = escudo;
     }
+ 
     /**
      * 
      * @return 

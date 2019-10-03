@@ -5,7 +5,7 @@
  */
 package com.mycompany.beans;
 
-import com.mycompany.interfaces.UniversidadFacadeLocal;
+import com.mycompany.interfaces.IUniversidadFacadeLocal;
 import com.mycompany.entity.Universidad;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  * @author angie
  */
 @Stateless
-public class UniversidadFacade extends AbstractFacade<Universidad> implements UniversidadFacadeLocal {
+public class UniversidadFacade extends AbstractFacade<Universidad> implements IUniversidadFacadeLocal {
     @PersistenceContext(unitName = "com.mycompany_MappingOneToMany-ejb_ejb_1.0-SNAPSHOTPU")
     private EntityManager em;
 

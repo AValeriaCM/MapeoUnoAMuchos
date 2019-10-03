@@ -5,6 +5,7 @@
  */
 package com.mycompany.entity;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,10 +25,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "diplomado")
-public class Diplomado {
+public class Diplomado implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id")
     private int id;
     @Column(name = "nombre")
     private String nombre;
@@ -37,9 +39,12 @@ public class Diplomado {
     private boolean estado;
     @ManyToOne
     @JoinColumn(name = "universidad_id", nullable = false)
-    private Universidad universidad_id;
+    private Universidad universidad;
     @OneToMany(mappedBy = "diplomado", cascade = CascadeType.ALL)
     private List<Estudiante> listaEstudiante;
+
+    public Diplomado() {
+    }
     
     /**
      * Constructor
@@ -110,20 +115,7 @@ public class Diplomado {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    /**
-     * 
-     * @return 
-     */
-    public Universidad getUniversidad_id() {
-        return universidad_id;
-    }
-    /**
-     * 
-     * @param universidad_id 
-     */
-    public void setUniversidad_id(Universidad universidad_id) {
-        this.universidad_id = universidad_id;
-    }
+    
     /**
      * 
      * @return 
@@ -137,6 +129,14 @@ public class Diplomado {
      */
     public void setListaEstudiante(List<Estudiante> listaEstudiante) {
         this.listaEstudiante = listaEstudiante;
+    }
+
+    public Universidad getUniversidad() {
+        return universidad;
+    }
+
+    public void setUniversidad(Universidad universidad) {
+        this.universidad = universidad;
     }
     
     

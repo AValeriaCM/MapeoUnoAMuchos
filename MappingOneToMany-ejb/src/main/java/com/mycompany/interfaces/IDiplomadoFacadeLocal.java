@@ -5,7 +5,7 @@
  */
 package com.mycompany.interfaces;
 
-import com.mycompany.entity.Universidad;
+import com.mycompany.entity.Diplomado;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -14,19 +14,19 @@ import javax.ejb.Local;
  * @author angie
  */
 @Local
-public interface UniversidadFacadeLocal {
+public interface IDiplomadoFacadeLocal {
 
-    void create(Universidad universidad);
+    void create(Diplomado diplomado);
 
-    void edit(Universidad universidad);
+    void edit(Diplomado diplomado);
 
-    void remove(Universidad universidad);
+    void remove(Diplomado diplomado);
 
-    Universidad find(Object id);
+    Diplomado find(Object id);
 
-    List<Universidad> findAll();
+    List<Diplomado> findAll();
 
-    List<Universidad> findRange(int[] range);
+    List<Diplomado> findRange(int[] range);
 
     int count();
     

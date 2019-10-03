@@ -14,7 +14,7 @@ import javax.ejb.Local;
  * @author angie
  */
 @Local
-public interface EstudianteFacadeLocal {
+public interface IEstudianteFacadeLocal {
 
     void create(Estudiante estudiante);
 

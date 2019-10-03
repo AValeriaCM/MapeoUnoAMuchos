@@ -5,6 +5,7 @@
  */
 package com.mycompany.entity;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,9 +22,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "estudiante")
 
-public class Estudiante {
+public class Estudiante implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id")
     private int id;
     @Column(name = "nombre")
     private String nombre;
@@ -33,7 +35,12 @@ public class Estudiante {
     private boolean estado;
     @ManyToOne
     @JoinColumn(name = "diplomado_id", nullable = false)
-    private Diplomado diplomado_id;
+    private Diplomado diplomado;
+
+    public Estudiante() {
+    }
+    
+    
     /**
      * Constructor
      * @param id
@@ -103,20 +110,15 @@ public class Estudiante {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    /**
-     * 
-     * @return 
-     */
-    public Diplomado getDiplomado_id() {
-        return diplomado_id;
+
+    public Diplomado getDiplomado() {
+        return diplomado;
     }
-    /**
-     * 
-     * @param diplomado_id 
-     */
-    public void setDiplomado_id(Diplomado diplomado_id) {
-        this.diplomado_id = diplomado_id;
+
+    public void setDiplomado(Diplomado diplomado) {
+        this.diplomado = diplomado;
     }
+
     
     
     
