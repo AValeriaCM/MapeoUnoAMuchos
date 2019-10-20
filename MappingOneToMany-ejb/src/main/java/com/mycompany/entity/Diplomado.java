@@ -6,6 +6,7 @@
 package com.mycompany.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -24,43 +26,53 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "diplomado")
+@Table
 public class Diplomado implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id")
+    @Column
     private int id;
-    @Column(name = "nombre")
+    @Column
     private String nombre;
-    @Column(name = "duracion")
+    @Column
     private String duracion;
-    @Column(name = "estado")
-    private boolean estado;
+    @Column (name = "fecha_inicio")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date fechaInicio;
+    @Column (name = "fecha_fin")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date fechaFin;
     @ManyToOne
     @JoinColumn(name = "universidad_id", nullable = false)
     private Universidad universidad;
     @OneToMany(mappedBy = "diplomado", cascade = CascadeType.ALL)
     private List<Estudiante> listaEstudiante;
-
+    
+    
     public Diplomado() {
     }
+
+    
     
     /**
-     * Constructor
-     * @param id
+     * 
      * @param nombre
      * @param duracion
-     * @param estado 
+     * @param fechaInicio
+     * @param fechaFin
+     * @param universidad 
      */
-    public Diplomado(int id, String nombre, String duracion, boolean estado) {
-        this.id = id;
+    public Diplomado(String nombre, String duracion, Date fechaInicio, Date fechaFin, Universidad universidad) {
         this.nombre = nombre;
         this.duracion = duracion;
-        this.estado = estado;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.universidad = universidad;
     }
+
     /**
-     * 
+     *
      * @return 
      */
     public int getId() {
@@ -101,20 +113,6 @@ public class Diplomado implements Serializable{
     public void setDuracion(String duracion) {
         this.duracion = duracion;
     }
-    /**
-     * 
-     * @return 
-     */
-    public boolean isEstado() {
-        return estado;
-    }
-    /**
-     * 
-     * @param estado 
-     */
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
     
     /**
      * 
@@ -137,6 +135,22 @@ public class Diplomado implements Serializable{
 
     public void setUniversidad(Universidad universidad) {
         this.universidad = universidad;
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
     }
     
     

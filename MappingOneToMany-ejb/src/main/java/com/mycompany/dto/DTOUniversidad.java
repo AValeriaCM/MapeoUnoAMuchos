@@ -5,6 +5,8 @@
  */
 package com.mycompany.dto;
 
+import java.util.Date;
+
 /**
  *
  * @author angie
@@ -17,11 +19,30 @@ public class DTOUniversidad {
     private String nombre;
     private String extension;
     private String escudo;
+    private Date fundacion;
     /**
      * Constructor vacio
      */
     public DTOUniversidad() {
     }
+
+    public DTOUniversidad(String nombre, String extension, String escudo, Date fundacion) {
+        this.nombre = nombre;
+        this.extension = extension;
+        this.escudo = escudo;
+        this.fundacion = fundacion;
+    }
+
+    public Date getFundacion() {
+        return fundacion;
+    }
+
+    public void setFundacion(Date fundacion) {
+        this.fundacion = fundacion;
+    }
+
+    
+    
     /**
      * Metodo get
      * @return 

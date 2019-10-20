@@ -5,11 +5,13 @@
  */
 package com.mycompany.beans;
 
+import com.mycompany.dto.DTODiplomado;
 import com.mycompany.interfaces.IDiplomadoFacadeLocal;
 import com.mycompany.entity.Diplomado;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.modelmapper.ModelMapper;
 
 /**
  *
@@ -27,6 +29,20 @@ public class DiplomadoFacade extends AbstractFacade<Diplomado> implements IDiplo
 
     public DiplomadoFacade() {
         super(Diplomado.class);
+    }
+
+    @Override
+    public void crearDiplomado(DTODiplomado dipl) {
+        ModelMapper model = new ModelMapper();
+        Diplomado d = model.map(dipl, Diplomado.class);
+        create(d);
+    }
+
+    @Override
+    public void editarDiplomado(DTODiplomado dipl) {
+        ModelMapper model = new ModelMapper();
+        Diplomado d = model.map(dipl, Diplomado.class);
+        edit(d);
     }
     
 }

@@ -5,11 +5,13 @@
  */
 package com.mycompany.beans;
 
+import com.mycompany.dto.DTOUniversidad;
 import com.mycompany.interfaces.IUniversidadFacadeLocal;
 import com.mycompany.entity.Universidad;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.modelmapper.ModelMapper;
 
 /**
  *
@@ -27,6 +29,21 @@ public class UniversidadFacade extends AbstractFacade<Universidad> implements IU
 
     public UniversidadFacade() {
         super(Universidad.class);
+    }
+    
+    @Override
+    public void crearUniversidad(DTOUniversidad uni){
+        ModelMapper model = new ModelMapper();
+        Universidad u = model.map(uni, Universidad.class);
+        create(u);
+    }
+    
+    @Override
+    public void editarUniversidad(DTOUniversidad uni){
+        ModelMapper model = new ModelMapper();
+        Universidad u = model.map(uni, Universidad.class);
+        u.setExtension(uni.getExtension());
+        edit(u);
     }
     
 }

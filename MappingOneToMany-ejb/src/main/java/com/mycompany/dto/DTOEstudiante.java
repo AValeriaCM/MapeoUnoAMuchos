@@ -17,7 +17,7 @@ public class DTOEstudiante {
     private int id;
     private String nombre;
     private String cedula;
-    private boolean estado;
+    private String foto;
     private int diplomado_id;
     /**
      * Constructor vacio
@@ -70,16 +70,17 @@ public class DTOEstudiante {
      * 
      * @return 
      */
-    public boolean isEstado() {
-        return estado;
+    public String getFoto() {
+        return foto;
     }
     /**
      * 
-     * @param estado 
+     * @param foto 
      */
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
+    
     /**
      * 
      * @return 

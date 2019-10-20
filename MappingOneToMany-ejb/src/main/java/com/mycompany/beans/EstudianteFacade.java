@@ -5,11 +5,13 @@
  */
 package com.mycompany.beans;
 
+import com.mycompany.dto.DTOEstudiante;
 import com.mycompany.interfaces.IEstudianteFacadeLocal;
 import com.mycompany.entity.Estudiante;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.modelmapper.ModelMapper;
 
 /**
  *
@@ -27,6 +29,13 @@ public class EstudianteFacade extends AbstractFacade<Estudiante> implements IEst
 
     public EstudianteFacade() {
         super(Estudiante.class);
+    }
+
+    @Override
+    public void crearEstudiante(DTOEstudiante est) {
+        ModelMapper model = new ModelMapper();
+        Estudiante e = model.map(est, Estudiante.class);
+        create(e);
     }
     
 }

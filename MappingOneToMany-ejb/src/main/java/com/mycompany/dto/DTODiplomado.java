@@ -5,6 +5,8 @@
  */
 package com.mycompany.dto;
 
+import java.util.Date;
+
 /**
  *
  * @author angie
@@ -16,7 +18,8 @@ public class DTODiplomado {
     private int id;
     private String nombre;
     private String duracion;
-    private boolean estado;
+    private Date fechaInicio;
+    private Date fechaFin;
     private int universidad_id;
     /**
      * constructor vacio
@@ -66,19 +69,34 @@ public class DTODiplomado {
         this.duracion = duracion;
     }
     /**
-     * Metodo 
+     * 
      * @return 
      */
-    public boolean isEstado() {
-        return estado;
+    public Date getFechaInicio() {
+        return fechaInicio;
     }
     /**
-     * Metodo set
-     * @param estado 
+     * 
+     * @param fechaInicio 
      */
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
     }
+    /**
+     * 
+     * @return 
+     */
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+    /**
+     * 
+     * @param fechaFin 
+     */
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+    
     /**
      * Metodo get
      * @return 

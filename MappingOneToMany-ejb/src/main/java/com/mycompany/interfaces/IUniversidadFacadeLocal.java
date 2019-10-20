@@ -5,6 +5,7 @@
  */
 package com.mycompany.interfaces;
 
+import com.mycompany.dto.DTOUniversidad;
 import com.mycompany.entity.Universidad;
 import java.util.List;
 import javax.ejb.Local;
@@ -29,5 +30,9 @@ public interface IUniversidadFacadeLocal {
     List<Universidad> findRange(int[] range);
 
     int count();
+    
+    void crearUniversidad(DTOUniversidad uni);
+    
+    void editarUniversidad(DTOUniversidad uni);
     
 }

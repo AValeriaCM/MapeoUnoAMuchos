@@ -20,40 +20,43 @@ import javax.persistence.Table;
  * @author angie
  */
 @Entity
-@Table(name = "estudiante")
+@Table
 
 public class Estudiante implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id")
+    @Column
     private int id;
-    @Column(name = "nombre")
+    @Column
     private String nombre;
-    @Column(name = "cedula")
+    @Column
     private String cedula;
-    @Column(name = "estado")
-    private boolean estado;
+    @Column
+    private String foto;
     @ManyToOne
     @JoinColumn(name = "diplomado_id", nullable = false)
     private Diplomado diplomado;
-
-    public Estudiante() {
-    }
-    
     
     /**
+     * Constructor vacio
+     */
+    public Estudiante() {
+    }
+    /**
      * Constructor
-     * @param id
      * @param nombre
      * @param cedula
-     * @param estado 
+     * @param foto
+     * @param diplomado 
      */
-    public Estudiante(int id, String nombre, String cedula, boolean estado) {
-        this.id = id;
+    public Estudiante(String nombre, String cedula, String foto, Diplomado diplomado) {
         this.nombre = nombre;
         this.cedula = cedula;
-        this.estado = estado;
+        this.foto = foto;
+        this.diplomado = diplomado;
     }
+    
+    
     /**
      * 
      * @return 
@@ -100,21 +103,27 @@ public class Estudiante implements Serializable{
      * 
      * @return 
      */
-    public boolean isEstado() {
-        return estado;
+    public String getFoto() {
+        return foto;
     }
     /**
      * 
-     * @param estado 
+     * @param foto 
      */
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
-
+    /**
+     * 
+     * @return 
+     */
     public Diplomado getDiplomado() {
         return diplomado;
     }
-
+    /**
+     * 
+     * @param diplomado 
+     */
     public void setDiplomado(Diplomado diplomado) {
         this.diplomado = diplomado;
     }

@@ -5,6 +5,7 @@
  */
 package com.mycompany.interfaces;
 
+import com.mycompany.dto.DTODiplomado;
 import com.mycompany.entity.Diplomado;
 import java.util.List;
 import javax.ejb.Local;
@@ -29,5 +30,9 @@ public interface IDiplomadoFacadeLocal {
     List<Diplomado> findRange(int[] range);
 
     int count();
+    
+    void crearDiplomado(DTODiplomado dipl);
+    
+    void editarDiplomado(DTODiplomado dipl);
     
 }

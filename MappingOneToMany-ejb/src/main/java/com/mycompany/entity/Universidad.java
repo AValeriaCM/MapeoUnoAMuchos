@@ -6,6 +6,7 @@
 package com.mycompany.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -27,36 +29,39 @@ public class Universidad implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id")
+    @Column
     private int id;
-    @Column(name = "nombre")
+    @Column
     private String nombre;
-    @Column(name = "extension")
+    @Column
     private String extension;
-    @Column(name = "escudo")
+    @Column
     private String escudo;
     @OneToMany(mappedBy = "universidad", cascade = CascadeType.ALL)
     private List<Diplomado> listaDiplomados;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date fundacion;
 
     public Universidad() {
     }
     
     
     /**
-     * Constructor
-     * @param id
+     * 
      * @param nombre
      * @param extension
-     * @param escudo 
+     * @param escudo
+     * @param fundacion 
      */
-    public Universidad(String nombre, String extension, String escudo) {
+    public Universidad(String nombre, String extension, String escudo, Date fundacion) {
         this.nombre = nombre;
         this.extension = extension;
         this.escudo = escudo;
+        this.fundacion = fundacion;
     }
- 
+
     /**
-     * 
+     *
      * @return 
      */
     public int getId() {
@@ -124,6 +129,20 @@ public class Universidad implements Serializable{
      */
     public void setListaDiplomados(List<Diplomado> listaDiplomados) {
         this.listaDiplomados = listaDiplomados;
+    }
+    /**
+     * 
+     * @return 
+     */
+    public Date getFundacion() {
+        return fundacion;
+    }
+    /**
+     * 
+     * @param fundacion 
+     */
+    public void setFundacion(Date fundacion) {
+        this.fundacion = fundacion;
     }
     
     

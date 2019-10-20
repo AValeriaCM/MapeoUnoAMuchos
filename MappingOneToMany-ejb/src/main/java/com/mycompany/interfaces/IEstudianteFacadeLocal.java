@@ -5,6 +5,7 @@
  */
 package com.mycompany.interfaces;
 
+import com.mycompany.dto.DTOEstudiante;
 import com.mycompany.entity.Estudiante;
 import java.util.List;
 import javax.ejb.Local;
@@ -30,4 +31,5 @@ public interface IEstudianteFacadeLocal {
 
     int count();
     
+    void crearEstudiante(DTOEstudiante est);
 }
