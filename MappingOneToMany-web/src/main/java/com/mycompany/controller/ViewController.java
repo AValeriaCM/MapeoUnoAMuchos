@@ -5,6 +5,7 @@
  */
 package com.mycompany.controller;
 
+import com.mycompany.dto.DTOView;
 import com.mycompany.entity.Estudiante;
 import com.mycompany.entity.View;
 import com.mycompany.interfaces.ViewFacadeLocal;
