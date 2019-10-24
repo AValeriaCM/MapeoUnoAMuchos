@@ -5,6 +5,7 @@
  */
 package com.mycompany.interfaces;
 
+import com.mycompany.dto.DTOView;
 import com.mycompany.entity.View;
 import java.util.List;
 import javax.ejb.Local;

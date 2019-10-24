@@ -8,6 +8,7 @@ package com.mycompany.beans;
 import com.mycompany.dto.DTOView;
 import com.mycompany.interfaces.ViewFacadeLocal;
 import com.mycompany.entity.View;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,6 +16,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 
 /**
  *
@@ -35,20 +38,19 @@ public class ViewFacade extends AbstractFacade<View> implements ViewFacadeLocal 
     }
     
     @Override
+    /**
+     * Metodo que genera reporte
+     */
     public List<View> reporte(){
-        TypedQuery<View> consulta = em.createNamedQuery("reporte", View.class);
-        List<View> listaReporte = consulta.getResultList();
+        List<View> listaReporte = em.createNamedQuery("reporte", View.class).getResultList();
+//        for (View lR : listaReporte) {
+//            System.out.println(lR.getNombreDiplomado()+" "+lR.getFoto());
+//        }
+        ModelMapper mp = new ModelMapper();
+        Type listType = new TypeToken<List<View>>() {}.getType();
+        List<View> listaDto = mp.map(listaReporte, listType);
         
-        List<View> listaTemp = new ArrayList();
-        Iterator it = listaReporte.iterator();
-        
-        while(it.hasNext()){
-            Object[] obj = (Object[]) it.next();
-            View v = new View(String.valueOf(obj[0]), String.valueOf(obj[1]), String.valueOf(obj[2]), String.valueOf(obj[3]), String.valueOf(obj[4]), String.valueOf(obj[5]), String.valueOf(obj[6]));        
-            listaTemp.add(v);
-        }
-        
-        return listaTemp;
+        return listaDto;
     }
     
 }

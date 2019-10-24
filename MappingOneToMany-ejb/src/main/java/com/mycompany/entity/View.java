@@ -10,6 +10,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -21,12 +23,14 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "vista_univ")
-@NamedQueries({
-    @NamedQuery(name = "reporte", query = "SELECT u.nombre, u.extension, d.nombre, d.fechaInicio, d.fechaFin, e.nombre, e.foto FROM Universidad u JOIN u.listaDiplomados d JOIN d.listaEstudiante e")
+@NamedNativeQueries({
+    @NamedNativeQuery(name = "reporte", query = "SELECT e.id, u.nombre AS 'nombreUniversidad', u.extension, d.nombre AS 'nombreDiplomado', d.fecha_inicio AS 'fechaInicio', d.fecha_fin AS 'fechaFin', e.nombre AS 'nombreEstudiante', e.foto FROM universidad u JOIN diplomado d ON d.universidad_id = u.id JOIN estudiante e ON e.diplomado_id = d.id", resultClass = View.class)
 })
 public class View implements Serializable{
     
     @Id
+    private int id;
+    
     @Column
     private String nombreUniversidad;
     @Column
@@ -64,6 +68,14 @@ public class View implements Serializable{
         this.fechaFin = fechaFin;
         this.nombreEstudiante = nombreEstudiante;
         this.foto = foto;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     /**
      * 
